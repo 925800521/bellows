@@ -1,5 +1,8 @@
 var Mobify = window.Mobify = window.Mobify || {};
-Mobify.$ = Mobify.$ || window.Zepto || window.jQuery;
+var Adaptive = window.Adaptive || {};
+if (Adaptive.$ === undefined) {
+    Mobify.$ = Mobify.$ || window.Zepto || window.jQuery;
+}
 Mobify.UI = Mobify.UI || {};
 
 (function($, document) {
@@ -9,7 +12,7 @@ Mobify.UI = Mobify.UI || {};
         'touch': 'ontouchend' in document
     });
 
-})(Mobify.$, document);
+})(Adaptive.$ || Mobify.$, document);
 
 
 /**
@@ -87,7 +90,7 @@ Mobify.UI.Utils = (function($) {
 
     return exports;
 
-})(Mobify.$);
+})(Adaptive.$ || Mobify.$);
 
 
 /*
@@ -292,7 +295,7 @@ Mobify.UI.Bellows = (function($, Utils) {
 
     return Bellows;
     
-})(Mobify.$, Mobify.UI.Utils);
+})(Adaptive.$ || Mobify.$, Mobify.UI.Utils);
     
 (function($) {
     $.fn.bellows = function(options) {
@@ -307,4 +310,4 @@ Mobify.UI.Bellows = (function($, Utils) {
             this.bellows = bellows; // Provide the bellows object to callers
         });
     };
-})(Mobify.$);
+})(Adaptive.$ || Mobify.$);
